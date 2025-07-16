@@ -13,26 +13,26 @@ body {
 .materia {
   padding: 10px;
   border-radius: 8px;
-  background-color: #fff;
-  border: 2px solid #ccc;
+  background-color: #66000;
+  border: 3px solid #ccc;
   cursor: pointer;
   min-width: 200px;
   transition: 0.2s;
 }
 
 .habilitada {
-  background-color: #e0f8e0;
-  border-color: #27ae60;
+  background-color: #66000;
+  border-color: #3e0505;
 }
 
 .deshabilitada {
-  background-color: #eee;
-  color: #999;
-  border-color: #ddd;
+  background-color: #e3b5a4;
+  color: #e3b5a4;
+  border-color: #d4a493;
   cursor: not-allowed;
 }
 
 .aprobada {
-  background-color: #b3e5fc;
-  border-color: #0288d1;
+  background-color: #af3333;
+  border-color: #8c1f1f;
 }
