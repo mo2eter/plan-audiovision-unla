@@ -30,7 +30,7 @@ const materiasPorAnio = {
   { nombre: "Realización Integral Audiovisual 2", correlativas: ["Realización Integral Audiovisual 1", "Guión"] },
   { nombre: "Ética Profesional", correlativas: ["Taller de Lectura y Escritura profesional"] }
 ],
-"CICLO DE FORMACIÓN ORIENTADA": [
+"ORIENTACIÓN": [
   { nombre: "Gestión de proyectos Audiovisuales", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Estética", correlativas: ["Arte y Sociedad"] },
   { nombre: "Comunicación Audiovisual", correlativas: ["Taller de Lectura y Escritura profesional"] },
