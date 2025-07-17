@@ -1,13 +1,13 @@
+.title {
+  color: #d17777
+}
+
 body {
   font-family: Helvetica;
   color: #d99393;
   text-align: center;
   padding: 20px;
   background: #f5e7e2;
-}
-
-.title {
-  color: #d17777
 }
 
 #malla {
