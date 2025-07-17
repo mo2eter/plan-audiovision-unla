@@ -6,6 +6,31 @@ body {
 
 #malla {
   display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.columna {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff8f5;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.columna h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #6e1a1a;
+  text-align: center;
+}
+
+#malla {
+  display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -35,29 +60,3 @@ body {
 .aprobada {
   background-color: #af3333;
   border-color: #8c1f1f;
-}
-
-#malla {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  overflow-x: auto;
-}
-
-.columna {
-  flex: 0 0 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #fff8f5;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 5px #ccc;
-}
-
-.columna h2 {
-  margin: 0;
-  font-size: 1.2em;
-  color: #6e1a1a;
-  text-align: center;
-}
