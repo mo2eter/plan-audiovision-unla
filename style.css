@@ -104,5 +104,6 @@ body {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 12px #ccc;
+  justify-content: center;
   overflow-x: visible;
 }
