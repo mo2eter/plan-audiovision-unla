@@ -59,33 +59,29 @@ const materiasPorAnio = {
  ]
 };
 
-let estadoMaterias = {}; // Guarda el estado de cada materia: 0 = nada, 1 = cursada, 2 = aprobada
+let estadoMaterias = {}; // 0 = nada, 1 = cursada, 2 = aprobada
+
+const tecnicaturaAnios = ["PRIMER AÑO", "SEGUNDO AÑO", "TERCER AÑO"]; // consideramos seminarios dentro del segundo año
+
+const esMateriaDeTecnicatura = nombre => {
+  for (const anio of tecnicaturaAnios) {
+    if (materiasPorAnio[anio].some(m => m.nombre === nombre)) return true;
+  }
+  return false;
+};
 
 function puedeCursarse(materia) {
   return materia.correlativas.every(cor => {
     const estado = estadoMaterias[cor] || 0;
-    return estado >= 1; // Se puede cursar si la correlativa fue al menos cursada
+    return estado >= 1;
   });
 }
 
-function actualizarProgreso() {
-  const totalMaterias = Object.values(materiasPorAnio).flat().length;
-  const aprobadasCount = Object.values(estadoMaterias).filter(e => e === 2).length;
-
-  const porcentaje = Math.round((aprobadasCount / totalMaterias) * 100);
-
-  const barra = document.getElementById("progreso-barra");
-  const texto = document.getElementById("progreso-texto");
-
-  barra.style.width = porcentaje + "%";
-  texto.textContent = `${porcentaje}% Aprobado`;
-}
-
-function renderMaterias() {
-  const contenedor = document.getElementById("malla");
+function renderColumnas(materiasPorAnioObj, contenedorId) {
+  const contenedor = document.getElementById(contenedorId);
   contenedor.innerHTML = "";
 
-  for (const [anio, materias] of Object.entries(materiasPorAnio)) {
+  for (const [anio, materias] of Object.entries(materiasPorAnioObj)) {
     const columna = document.createElement("div");
     columna.className = "columna";
 
@@ -114,8 +110,7 @@ function renderMaterias() {
         const estadoActual = estadoMaterias[m.nombre] || 0;
         const nuevoEstado = (estadoActual + 1) % 3;
         estadoMaterias[m.nombre] = nuevoEstado;
-        renderMaterias();
-        actualizarProgreso();
+        renderTodo();
       });
 
       columna.appendChild(div);
@@ -123,8 +118,56 @@ function renderMaterias() {
 
     contenedor.appendChild(columna);
   }
+}
 
+function actualizarProgreso() {
+  const totalTecnico = tecnicaturaAnios.reduce(
+    (acc, anio) => acc + materiasPorAnio[anio].length,
+    0
+  );
+  const aprobadasTecnico = Object.entries(estadoMaterias).filter(
+    ([mat, estado]) => estado === 2 && esMateriaDeTecnicatura(mat)
+  ).length;
+
+  const totalLic = Object.keys(materiasPorAnio)
+    .filter(anio => !tecnicaturaAnios.includes(anio))
+    .reduce((acc, anio) => acc + materiasPorAnio[anio].length, 0);
+  const aprobadasLic = Object.entries(estadoMaterias).filter(
+    ([mat, estado]) =>
+      estado === 2 &&
+      !esMateriaDeTecnicatura(mat) &&
+      materiasPorAnio[Object.keys(materiasPorAnio).find(anio => materiasPorAnio[anio].some(m => m.nombre === mat))] !== undefined
+  ).length;
+
+  const porcentajeTecnico = Math.round((aprobadasTecnico / totalTecnico) * 100);
+  const porcentajeLic = Math.round((aprobadasLic / totalLic) * 100);
+
+  // Actualizar barras y textos
+  document.getElementById("progreso-tecnico-barra").style.width = porcentajeTecnico + "%";
+  document.getElementById("progreso-tecnico-texto").textContent =
+    `Técnico en Audiovisión: ${porcentajeTecnico}% aprobado`;
+
+  document.getElementById("progreso-licenciatura-barra").style.width = porcentajeLic + "%";
+  document.getElementById("progreso-licenciatura-texto").textContent =
+    `Licenciatura: ${porcentajeLic}% aprobado`;
+}
+
+function renderTodo() {
+  const materiasTecnicatura = {};
+  tecnicaturaAnios.forEach(anio => {
+    materiasTecnicatura[anio] = materiasPorAnio[anio];
+  });
+
+  const materiasLicenciatura = {};
+  Object.keys(materiasPorAnio).forEach(anio => {
+    if (!tecnicaturaAnios.includes(anio)) {
+      materiasLicenciatura[anio] = materiasPorAnio[anio];
+    }
+  });
+
+  renderColumnas(materiasTecnicatura, "malla-tecnico");
+  renderColumnas(materiasLicenciatura, "malla-licenciatura");
   actualizarProgreso();
 }
 
-renderMaterias();
+renderTodo();
