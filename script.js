@@ -135,19 +135,17 @@ function actualizarProgreso() {
     ([mat, estado]) => estado === 2 && esMateriaDeTecnicatura(mat)
   ).length;
 
-  const totalLic = Object.keys(materiasPorAnio)
-    .filter(anio => !tecnicaturaAnios.includes(anio))
-    .reduce((acc, anio) => acc + materiasPorAnio[anio].length, 0);
+  const totalGeneral = Object.keys(materiasPorAnio).reduce(
+    (acc, anio) => acc + materiasPorAnio[anio].length,
+    0
+  );
 
-  const aprobadasLic = Object.entries(estadoMaterias).filter(
-    ([mat, estado]) =>
-      estado === 2 &&
-      !esMateriaDeTecnicatura(mat) &&
-      materiasPorAnio[Object.keys(materiasPorAnio).find(anio => materiasPorAnio[anio].some(m => m.nombre === mat))] !== undefined
+  const aprobadasGeneral = Object.entries(estadoMaterias).filter(
+    ([mat, estado]) => estado === 2
   ).length;
 
   const porcentajeTecnicatura = Math.round((aprobadasTecnicatura / totalTecnicatura) * 100);
-  const porcentajeLic = Math.round((aprobadasLic / totalLic) * 100);
+  const porcentajeLic = Math.round((aprobadasGeneral / totalGeneral) * 100);
 
   document.getElementById("progreso-tecnicatura-barra").style.width = porcentajeTecnicatura + "%";
   document.getElementById("progreso-tecnicatura-texto").textContent =
