@@ -5,7 +5,7 @@ const materias = [
   { nombre: "Taller de Lectura y Escritura profesional", correlativas: [] },
   { nombre: "Educación Auditiva", correlativas: [] },
   { nombre: "Electrónica de las Comunicaciones", correlativas: [] },
-  { nombre: "Lenguaje Audiovisual 1", correlativas: [], },
+  { nombre: "Lenguaje Audiovisual 1", correlativas: [] },
   { nombre: "Registro de Sonido en Audiovisuales", correlativas: [] },
   { nombre: "Montaje 1", correlativas: [] },
   { nombre: "Fotografía e Iluminación en Audiovisuales", correlativas [] },
@@ -45,11 +45,11 @@ const materias = [
   { nombre: "Metodología de Investigación", correlativas: ["Taller de Lectura y Escritura profesional"] },
   { nombre: "Edición y Corrección Digital de Imagen", correlativas: ["Tecnología de la Imagen", "Fotografía e Iluminación en Audiovisuales", "Taller de Montaje"] },
   { nombre: "Tecnología de Postproducción 2", correlativas: ["Tecnología de Postproducción 1"] },
-  { nombre: "Montaje 2", correlativas: ["Montaje 1"], },
+  { nombre: "Montaje 2", correlativas: ["Montaje 1"] },
   { nombre: "Animación 3D 1", correlativas: ["Edición y Corrección Digital de Imagen"] },
   { nombre: "Composición Digital", correlativas: ["Edición y Corrección Digital de Imagen"] },
-  { nombre: "Tecnología de Postproducción 3", correlativas ["Tecnología de Postproducción 2"] },
-  { nombre: "Optativa 1", correlativas [] },
+  { nombre: "Tecnología de Postproducción 3", correlativas: ["Tecnología de Postproducción 2"] },
+  { nombre: "Optativa 1", correlativas: [] },
 
   // QUINTO AÑO
   { nombre: "Taller de Trabajo Final Integrador Mención Postproducción de Imagen", correlativas: ["Géneros Estilos Audiovisuales", "Gestión de proyectos Audiovisuales", "Estética", "Imagen, Tipografía e Identidad Cultural", "Semiótica"] },
@@ -57,7 +57,7 @@ const materias = [
   { nombre: "Taller de Postproducción de Imagen", correlativas: ["Animación 3D 1", "Composición Digital"] },
   { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Optativa 2", correlativas: [] },
-  { nombre: "Optativa 3", correlativas: [], },
+  { nombre: "Optativa 3", correlativas: [] },
 
   
 ];
