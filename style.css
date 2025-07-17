@@ -20,7 +20,7 @@ body {
   width: 1900px;
   margin: 0 auto;
   justify-content: center;
-  flex-wrap:nowrap;
+  flex-wrap: nowrap;
   overflow-x: auto;
 }
 
