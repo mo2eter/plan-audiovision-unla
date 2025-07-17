@@ -57,7 +57,7 @@ const materias = [
   { nombre: "Taller de Postproducción de Imagen", correlativas: ["Animación 3D 1", "Composición Digital"] },
   { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Optativa 2", correlativas: [] },
-  { nombre: "Optativa 3", correlativas: [] },
+  { nombre: "Optativa 3", correlativas: [] }
 
   
 ];
