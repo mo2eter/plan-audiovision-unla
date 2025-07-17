@@ -8,8 +8,8 @@ const materias = [
   { nombre: "Lenguaje Audiovisual 1", correlativas: [] },
   { nombre: "Registro de Sonido en Audiovisuales", correlativas: [] },
   { nombre: "Montaje 1", correlativas: [] },
-  { nombre: "Fotografía e Iluminación en Audiovisuales", correlativas [] },
-  { nombre: "Inglés I", correlativas [] },
+  { nombre: "Fotografía e Iluminación en Audiovisuales", correlativas: [] },
+  { nombre: "Inglés I", correlativas: [] },
 
   // SEGUNDO AÑO
   { nombre: "Lenguaje Audiovisual 2", correlativas: ["Lenguaje Audiovisual 1", "Fotografía e Iluminación en Audiovisuales"] },
