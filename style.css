@@ -23,7 +23,7 @@ body {
 }
 
 .columna {
-  flex: 0 0 200px; /* ancho fijo */
+  flex: 0 0 250px; /* ancho fijo */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -39,7 +39,7 @@ body {
   background-color: #e19494;
   border: 3px solid #b66262;
   cursor: pointer;
-  min-width: 180px;
+  min-width: 200px;
   transition: 0.2s;
 }
 
@@ -49,9 +49,9 @@ body {
 }
 
 .deshabilitada {
-  background-color: #f2c3d5;
-  color: #d59fb4;
-  border-color: #d59fb4;
+  background-color: #eac6d1;
+  color: #d59faf;
+  border-color: #d59faf;
   cursor: not-allowed;
 }
 
