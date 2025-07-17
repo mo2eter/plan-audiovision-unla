@@ -12,19 +12,19 @@ body {
 
 .malla {
   display: flex;
-  flex-direction: center;
+  flex-direction: row;
   gap: 20px;
   overflow-x: auto; /* scroll horizontal solo si hace falta */
   padding: 10px 0;
   width: 100%;
-  width: 1900px;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-x: auto;
 }
 
 .columna {
-  flex: 0 0 250px; /* ancho fijo */
+  min-width: 240px; /* ancho fijo */
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
