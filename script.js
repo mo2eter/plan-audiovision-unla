@@ -126,12 +126,12 @@ function renderMateriasUnidas() {
 }
 
 function actualizarProgreso() {
-  const totalTecnico = tecnicaturaAnios.reduce(
+  const totalTecnicatura = tecnicaturaAnios.reduce(
     (acc, anio) => acc + materiasPorAnio[anio].length,
     0
   );
 
-  const aprobadasTecnico = Object.entries(estadoMaterias).filter(
+  const aprobadasTecnicatura = Object.entries(estadoMaterias).filter(
     ([mat, estado]) => estado === 2 && esMateriaDeTecnicatura(mat)
   ).length;
 
@@ -146,12 +146,12 @@ function actualizarProgreso() {
       materiasPorAnio[Object.keys(materiasPorAnio).find(anio => materiasPorAnio[anio].some(m => m.nombre === mat))] !== undefined
   ).length;
 
-  const porcentajeTecnico = Math.round((aprobadasTecnico / totalTecnico) * 100);
+  const porcentajeTecnicatura = Math.round((aprobadasTecnicatura / totalTecnicatura) * 100);
   const porcentajeLic = Math.round((aprobadasLic / totalLic) * 100);
 
-  document.getElementById("progreso-tecnico-barra").style.width = porcentajeTecnico + "%";
-  document.getElementById("progreso-tecnico-texto").textContent =
-    `Técnico en Audiovisión: ${porcentajeTecnico}% aprobado`;
+  document.getElementById("progreso-tecnicatura-barra").style.width = porcentajeTecnicatura + "%";
+  document.getElementById("progreso-tecnicatura-texto").textContent =
+    `Técnicatura en Audiovisión: ${porcentajeTecnicatura}% aprobado`;
 
   document.getElementById("progreso-licenciatura-barra").style.width = porcentajeLic + "%";
   document.getElementById("progreso-licenciatura-texto").textContent =
