@@ -49,9 +49,9 @@ body {
 }
 
 .deshabilitada {
-  background-color: #eac6cc;
-  color: #e1b1b9;
-  border-color: #e1b1b9;
+  background-color: #eac6c6;
+  color: #d19f9f;
+  border-color: #d19f9f;
   cursor: not-allowed;
 }
 
