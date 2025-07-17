@@ -46,7 +46,7 @@ body {
   background-color: #e19494;
   border: 3px solid #b66262;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 180px;
   transition: 0.2s;
 }
 
