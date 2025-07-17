@@ -64,7 +64,7 @@ const materiasPorAnio = {
 let aprobadas = new Set();
 
 function puedeCursarse(materia) {
-  return materia.correlativas.every(cor => aprobadas.has(cor));
+  return materia.correlativas.every(cor => cursadas.has(cor));
 }
 
 function renderMaterias() {
