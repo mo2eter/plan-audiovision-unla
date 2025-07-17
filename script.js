@@ -75,17 +75,14 @@ function puedeCursarse(materia) {
   });
 }
 
-function renderMateriasUnidas() {
-  const contenedor = document.getElementById("malla");
-  contenedor.innerHTML = "";
+function renderMaterias() {
+  const tecnicoContainer = document.getElementById("malla-tecnico");
+  const licenciaturaContainer = document.getElementById("malla-licenciatura");
 
-  const todosLosAnios = [
-    ...tecnicaturaAnios,
-    ...Object.keys(materiasPorAnio).filter(anio => !tecnicaturaAnios.includes(anio))
-  ];
+  tecnicoContainer.innerHTML = "";
+  licenciaturaContainer.innerHTML = "";
 
-  for (const anio of todosLosAnios) {
-    const materias = materiasPorAnio[anio];
+  for (const [anio, materias] of Object.entries(materiasPorAnio)) {
     const columna = document.createElement("div");
     columna.className = "columna";
 
@@ -98,31 +95,42 @@ function renderMateriasUnidas() {
       div.className = "materia";
       div.innerText = m.nombre;
 
-      const estado = estadoMaterias[m.nombre] || 0;
-
-      if (estado === 2) {
+      if (aprobadas.has(m.nombre)) {
         div.classList.add("aprobada");
-      } else if (estado === 1) {
+        div.addEventListener("click", () => {
+          aprobadas.delete(m.nombre);
+          cursadas.add(m.nombre);
+          renderMaterias();
+          actualizarProgreso();
+        });
+      } else if (cursadas.has(m.nombre)) {
         div.classList.add("cursada");
+        div.addEventListener("click", () => {
+          cursadas.delete(m.nombre);
+          aprobadas.add(m.nombre);
+          renderMaterias();
+          actualizarProgreso();
+        });
       } else if (puedeCursarse(m)) {
         div.classList.add("habilitada");
+        div.addEventListener("click", () => {
+          cursadas.add(m.nombre);
+          renderMaterias();
+          actualizarProgreso();
+        });
       } else {
         div.classList.add("deshabilitada");
       }
 
-      div.addEventListener("click", () => {
-        const estadoActual = estadoMaterias[m.nombre] || 0;
-        const nuevoEstado = (estadoActual + 1) % 3;
-        estadoMaterias[m.nombre] = nuevoEstado;
-        renderMateriasUnidas();
-        actualizarProgreso();
-      });
-
       columna.appendChild(div);
     });
 
-    contenedor.appendChild(columna);
-  }
+    // Asignar a contenedor según año
+    if (anio.startsWith("1") || anio.startsWith("2") || anio.startsWith("3")) {
+      tecnicoContainer.appendChild(columna);
+    } else {
+      licenciaturaContainer.appendChild(columna);
+    }
 }
 
 function actualizarProgreso() {
@@ -158,5 +166,5 @@ function actualizarProgreso() {
     `Licenciatura: ${porcentajeLic}% aprobado`;
 }
 
-renderMateriasUnidas();
+renderMaterias();
 actualizarProgreso();
