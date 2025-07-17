@@ -84,25 +84,32 @@ function renderMaterias() {
       div.className = "materia";
       div.innerText = m.nombre;
 
-      if (aprobadas.has(m.nombre)) {
-        div.classList.add("aprobada");
-        div.addEventListener("click", () => {
-          aprobadas.delete(m.nombre);  // DESMARCAR
-          renderMaterias();
-        });
-      } else if (puedeCursarse(m)) {
-        div.classList.add("habilitada");
-        div.addEventListener("click", () => {
-          aprobadas.add(m.nombre); // MARCAR
-          renderMaterias();
-        });
-      } else {
-        div.classList.add("deshabilitada");
-      }
-
-      columna.appendChild(div);
+  if (aprobadas.has(m.nombre)) {
+    div.classList.add("aprobada");
+    div.addEventListener("click", () => {
+      aprobadas.delete(m.nombre);
+      cursadas.add(m.nombre); // vuelve a "cursada sin final"
+      renderMaterias();
     });
+  } else if (cursadas.has(m.nombre)) {
+    div.classList.add("cursada");
+    div.addEventListener("click", () => {
+      cursadas.delete(m.nombre);
+      aprobadas.add(m.nombre);
+      renderMaterias();
+    });
+  } else if (puedeCursarse(m)) {
+    div.classList.add("habilitada");
+    div.addEventListener("click", () => {
+      cursadas.add(m.nombre);
+      renderMaterias();
+    });
+  } else {
+    div.classList.add("deshabilitada");
+  }
 
+  columna.appendChild(div);
+  });
     contenedor.appendChild(columna);
   }
 }
