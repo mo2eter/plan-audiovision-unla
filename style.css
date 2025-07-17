@@ -3,49 +3,23 @@
 }
 
 body {
-  font-family: Helvetica;
+  font-family: Helvetica, Arial, sans-serif;
   color: #d99393;
   text-align: center;
   padding: 20px;
   background: #f5e7e2;
 }
 
-#licenciatura-container {
-  max-width: 1100px;
-  margin: 0 auto 30px;
-  background: #fff8f5;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 12px #ccc;
-  overflow-x: auto;
-}
-
-#tecnico-container {
-  background: #fdf0e6;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 8px #b25e00aa;
-}
-
-#tecnico-container h3,
-#licenciatura-container h2 {
-  color: #b25e00;
-  margin-top: 0;
-}
-
 .malla {
   display: flex;
-  flex-direction: row;
   gap: 20px;
-  overflow-x: auto;
-  width: max-content;
+  overflow-x: auto; /* scroll horizontal solo si hace falta */
   padding: 10px 0;
-  margin: 0 auto;
+  justify-content: center;
 }
 
 .columna {
-  flex: 0 0 250px;
+  flex: 0 0 250px; /* ancho fijo */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -123,4 +97,13 @@ body {
   font-weight: bold;
   color: #fff;
   pointer-events: none;
+}
+
+#licenciatura-container {
+  max-width: 1300px; /* 5 columnas * 250px + gaps */
+  margin: 0 auto 30px;
+  background: #fff8f5;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 12px #ccc;
 }
