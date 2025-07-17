@@ -67,6 +67,7 @@ body {
 .aprobada {
   background-color: #e24141;
   border-color: #c73636;
+  color: #660000;
 }
 
 #progreso-container {
