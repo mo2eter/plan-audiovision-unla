@@ -151,7 +151,7 @@ function actualizarProgreso() {
 
   document.getElementById("progreso-tecnicatura-barra").style.width = porcentajeTecnicatura + "%";
   document.getElementById("progreso-tecnicatura-texto").textContent =
-    `Técnicatura en Audiovisión: ${porcentajeTecnicatura}% aprobado`;
+    `Tecnicatura: ${porcentajeTecnicatura}% aprobado`;
 
   document.getElementById("progreso-licenciatura-barra").style.width = porcentajeLic + "%";
   document.getElementById("progreso-licenciatura-texto").textContent =
