@@ -60,15 +60,13 @@ const materiasPorAnio = {
 };
 
 let estadoMaterias = {}; // 0 = nada, 1 = cursada, 2 = aprobada
+const tecnicaturaAnios = ["PRIMER AÑO", "SEGUNDO AÑO", "TERCER AÑO"];
 
-const tecnicaturaAnios = ["PRIMER AÑO", "SEGUNDO AÑO", "TERCER AÑO"]; // consideramos seminarios dentro del segundo año
-
-const esMateriaDeTecnicatura = nombre => {
-  for (const anio of tecnicaturaAnios) {
-    if (materiasPorAnio[anio].some(m => m.nombre === nombre)) return true;
-  }
-  return false;
-};
+function esMateriaDeTecnicatura(nombre) {
+  return tecnicaturaAnios.some(anio =>
+    materiasPorAnio[anio].some(m => m.nombre === nombre)
+  );
+}
 
 function puedeCursarse(materia) {
   return materia.correlativas.every(cor => {
@@ -77,11 +75,17 @@ function puedeCursarse(materia) {
   });
 }
 
-function renderColumnas(materiasPorAnioObj, contenedorId) {
-  const contenedor = document.getElementById(contenedorId);
+function renderMateriasUnidas() {
+  const contenedor = document.getElementById("malla");
   contenedor.innerHTML = "";
 
-  for (const [anio, materias] of Object.entries(materiasPorAnioObj)) {
+  const todosLosAnios = [
+    ...tecnicaturaAnios,
+    ...Object.keys(materiasPorAnio).filter(anio => !tecnicaturaAnios.includes(anio))
+  ];
+
+  for (const anio of todosLosAnios) {
+    const materias = materiasPorAnio[anio];
     const columna = document.createElement("div");
     columna.className = "columna";
 
@@ -110,7 +114,8 @@ function renderColumnas(materiasPorAnioObj, contenedorId) {
         const estadoActual = estadoMaterias[m.nombre] || 0;
         const nuevoEstado = (estadoActual + 1) % 3;
         estadoMaterias[m.nombre] = nuevoEstado;
-        renderTodo();
+        renderMateriasUnidas();
+        actualizarProgreso();
       });
 
       columna.appendChild(div);
@@ -125,6 +130,7 @@ function actualizarProgreso() {
     (acc, anio) => acc + materiasPorAnio[anio].length,
     0
   );
+
   const aprobadasTecnico = Object.entries(estadoMaterias).filter(
     ([mat, estado]) => estado === 2 && esMateriaDeTecnicatura(mat)
   ).length;
@@ -132,6 +138,7 @@ function actualizarProgreso() {
   const totalLic = Object.keys(materiasPorAnio)
     .filter(anio => !tecnicaturaAnios.includes(anio))
     .reduce((acc, anio) => acc + materiasPorAnio[anio].length, 0);
+
   const aprobadasLic = Object.entries(estadoMaterias).filter(
     ([mat, estado]) =>
       estado === 2 &&
@@ -142,7 +149,6 @@ function actualizarProgreso() {
   const porcentajeTecnico = Math.round((aprobadasTecnico / totalTecnico) * 100);
   const porcentajeLic = Math.round((aprobadasLic / totalLic) * 100);
 
-  // Actualizar barras y textos
   document.getElementById("progreso-tecnico-barra").style.width = porcentajeTecnico + "%";
   document.getElementById("progreso-tecnico-texto").textContent =
     `Técnico en Audiovisión: ${porcentajeTecnico}% aprobado`;
@@ -152,22 +158,5 @@ function actualizarProgreso() {
     `Licenciatura: ${porcentajeLic}% aprobado`;
 }
 
-function renderTodo() {
-  const materiasTecnicatura = {};
-  tecnicaturaAnios.forEach(anio => {
-    materiasTecnicatura[anio] = materiasPorAnio[anio];
-  });
-
-  const materiasLicenciatura = {};
-  Object.keys(materiasPorAnio).forEach(anio => {
-    if (!tecnicaturaAnios.includes(anio)) {
-      materiasLicenciatura[anio] = materiasPorAnio[anio];
-    }
-  });
-
-  renderColumnas(materiasTecnicatura, "malla-tecnico");
-  renderColumnas(materiasLicenciatura, "malla-licenciatura");
-  actualizarProgreso();
-}
-
-renderTodo();
+renderMateriasUnidas();
+actualizarProgreso();
