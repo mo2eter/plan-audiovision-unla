@@ -58,7 +58,7 @@ const materias = [
   { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Optativa 2", correlativas: [] },
   { nombre: "Optativa 3", correlativas: [] }
-];
+};
 
 let aprobadas = new Set();
 
@@ -81,20 +81,24 @@ function renderMaterias() {
     materias.forEach(m => {
       const div = document.createElement("div");
       div.className = "materia";
+      div.innerText = m.nombre;
 
       if (aprobadas.has(m.nombre)) {
         div.classList.add("aprobada");
+        div.addEventListener("click", () => {
+          aprobadas.delete(m.nombre);  // DESMARCAR
+          renderMaterias();
+        });
       } else if (puedeCursarse(m)) {
         div.classList.add("habilitada");
         div.addEventListener("click", () => {
-          aprobadas.add(m.nombre);
+          aprobadas.add(m.nombre); // MARCAR
           renderMaterias();
         });
       } else {
         div.classList.add("deshabilitada");
       }
 
-      div.innerText = m.nombre;
       columna.appendChild(div);
     });
 
