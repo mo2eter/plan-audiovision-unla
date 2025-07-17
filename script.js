@@ -1,5 +1,5 @@
 const materias = [
-  // PRIMER AÑO
+  "PRIMER AÑO": [
   { nombre: "Tecnología de la Imagen", correlativas: [] },
   { nombre: "Elementos de Audio", correlativas: [] },
   { nombre: "Taller de Lectura y Escritura profesional", correlativas: [] },
@@ -11,7 +11,7 @@ const materias = [
   { nombre: "Fotografía e Iluminación en Audiovisuales", correlativas: [] },
   { nombre: "Inglés I", correlativas: [] },
 
-  // SEGUNDO AÑO
+  "SEGUNDO AÑO": [
   { nombre: "Lenguaje Audiovisual 2", correlativas: ["Lenguaje Audiovisual 1", "Fotografía e Iluminación en Audiovisuales"] },
   { nombre: "Audición y Análisis Musical", correlativas: ["Taller de Lectura y Escritura profesional", "Educación Auditiva"] },
   { nombre: "Taller de Edición de Sonido", correlativas: ["Elementos de Audio", "Registro de Sonido en Audiovisuales"] },
@@ -21,25 +21,25 @@ const materias = [
   { nombre: "Guión", correlativas: ["Lenguaje Audiovisual 2"] },
   { nombre: "Taller de Composición Sonora", correlativas: ["Audición y Análisis Musical", "Taller de Edición de Sonido"] },
 
-  // TERCER AÑO
+  "TERCER AÑO": [
   { nombre: "Banda Sonora", correlativas: ["Taller de Composición Sonora"] },
   { nombre: "Géneros Estilos Audiovisuales", correlativas: ["Arte y Sociedad"] },
   { nombre: "Taller de Experimentación Audiovisual", correlativas: ["Lenguaje Audiovisual 2", "Taller de Composición Sonora"] },
   { nombre: "Realización Integral Audiovisual 2", correlativas: ["Realización Integral Audiovisual 1", "Guión"] },
   { nombre: "Ética Profesional", correlativas: ["Taller de Lectura y Escritura profesional"] },
 
-  // SEMINARIOS
+  "SEMINARIOS": [
   { nombre: "Seminario de Pensamiento Nacional y Latinoamericano", correlativas: [] },
   { nombre: "Seminario de Justicia y Derechos Humanos", correlativas: [] },
 
-  // CICLO DE FORMACIÓN ORIENTADA
+  "CICLO DE FORMACIÓN ORIENTADA": [
   { nombre: "Gestión de proyectos Audiovisuales", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Estética", correlativas: ["Arte y Sociedad"] },
   { nombre: "Comunicación Audiovisual", correlativas: ["Taller de Lectura y Escritura profesional"] },
   { nombre: "Tecnología de Postproducción 1", correlativas: ["Tecnología de la Imagen", "Electrónica de las Comunicaciones"] },
   { nombre: "Imagen, Tipografía e Identidad Cultural", correlativas: ["Taller de Lectura y Escritura profesional"] },
 
-  // CUARTO AÑO
+  "CUARTO AÑO": [
   { nombre: "Semiótica", correlativas: ["Taller de Lectura y Escritura profesional"] },
   { nombre: "Inglés II", correlativas: ["Inglés I"] },
   { nombre: "Metodología de Investigación", correlativas: ["Taller de Lectura y Escritura profesional"] },
@@ -51,7 +51,7 @@ const materias = [
   { nombre: "Tecnología de Postproducción 3", correlativas: ["Tecnología de Postproducción 2"] },
   { nombre: "Optativa 1", correlativas: [] },
 
-  // QUINTO AÑO
+  "QUINTO AÑO": [
   { nombre: "Taller de Trabajo Final Integrador Mención Postproducción de Imagen", correlativas: ["Géneros Estilos Audiovisuales", "Gestión de proyectos Audiovisuales", "Estética", "Imagen, Tipografía e Identidad Cultural", "Semiótica"] },
   { nombre: "Animación 3D 2", correlativas: ["Animación 3D 1", "Composición Digital"] },
   { nombre: "Taller de Postproducción de Imagen", correlativas: ["Animación 3D 1", "Composición Digital"] },
@@ -70,25 +70,36 @@ function renderMaterias() {
   const contenedor = document.getElementById("malla");
   contenedor.innerHTML = "";
 
-  materias.forEach(m => {
-    const div = document.createElement("div");
-    div.className = "materia";
+  for (const [anio, materias] of Object.entries(materiasPorAnio)) {
+    const columna = document.createElement("div");
+    columna.className = "columna";
 
-    if (aprobadas.has(m.nombre)) {
-      div.classList.add("aprobada");
-    } else if (puedeCursarse(m)) {
-      div.classList.add("habilitada");
-      div.addEventListener("click", () => {
-        aprobadas.add(m.nombre);
-        renderMaterias();
-      });
-    } else {
-      div.classList.add("deshabilitada");
-    }
+    const titulo = document.createElement("h2");
+    titulo.innerText = anio;
+    columna.appendChild(titulo);
 
-    div.innerText = m.nombre;
-    contenedor.appendChild(div);
-  });
+    materias.forEach(m => {
+      const div = document.createElement("div");
+      div.className = "materia";
+
+      if (aprobadas.has(m.nombre)) {
+        div.classList.add("aprobada");
+      } else if (puedeCursarse(m)) {
+        div.classList.add("habilitada");
+        div.addEventListener("click", () => {
+          aprobadas.add(m.nombre);
+          renderMaterias();
+        });
+      } else {
+        div.classList.add("deshabilitada");
+      }
+
+      div.innerText = m.nombre;
+      columna.appendChild(div);
+    });
+
+    contenedor.appendChild(columna);
+  }
 }
 
 renderMaterias();
