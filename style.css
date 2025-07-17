@@ -12,10 +12,13 @@ body {
 
 .malla {
   display: flex;
+  flex-direction: row;
   gap: 20px;
   overflow-x: auto; /* scroll horizontal solo si hace falta */
   padding: 10px 0;
-  width: max-content;
+  max-width: 100%;
+  width: 1900px;
+  margin: 0 auto;
   justify-content: center;
 }
 
