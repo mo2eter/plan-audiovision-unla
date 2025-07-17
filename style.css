@@ -40,8 +40,10 @@ body {
   background-color: #e19494;
   border: 3px solid #b66262;
   cursor: pointer;
-  min-width: 180px;
+  width: 180px;
   transition: 0.2s;
+  overflow-wrap: break-word; /* por si hay nombres largos */
+  text-align: center;
 }
 
 .habilitada {
