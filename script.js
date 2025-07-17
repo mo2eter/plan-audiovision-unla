@@ -19,7 +19,9 @@ const materiasPorAnio = {
   { nombre: "Realización Integral Audiovisual 1", correlativas: ["Lenguaje Audiovisual 2", "Taller de Edición de Sonido", "Taller de Montaje"] },
   { nombre: "Arte y Sociedad", correlativas: ["Audición y Análisis Musical"] },
   { nombre: "Guión", correlativas: ["Lenguaje Audiovisual 2"] },
-  { nombre: "Taller de Composición Sonora", correlativas: ["Audición y Análisis Musical", "Taller de Edición de Sonido"] }
+  { nombre: "Taller de Composición Sonora", correlativas: ["Audición y Análisis Musical", "Taller de Edición de Sonido"] },
+  { nombre: "Seminario de Pensamiento Nacional y Latinoamericano", correlativas: [] },
+  { nombre: "Seminario de Justicia y Derechos Humanos", correlativas: [] }
 ],
 "TERCER AÑO": [
   { nombre: "Banda Sonora", correlativas: ["Taller de Composición Sonora"] },
@@ -39,6 +41,7 @@ const materiasPorAnio = {
   { nombre: "Semiótica", correlativas: ["Taller de Lectura y Escritura profesional"] },
   { nombre: "Inglés II", correlativas: ["Inglés I"] },
   { nombre: "Metodología de Investigación", correlativas: ["Taller de Lectura y Escritura profesional"] },
+  { nombre: "Optativa 1", correlativas: [] },
   { nombre: "Edición y Corrección Digital de Imagen", correlativas: ["Tecnología de la Imagen", "Fotografía e Iluminación en Audiovisuales", "Taller de Montaje"] },
   { nombre: "Tecnología de Postproducción 2", correlativas: ["Tecnología de Postproducción 1"] },
   { nombre: "Montaje 2", correlativas: ["Montaje 1"] },
@@ -50,12 +53,7 @@ const materiasPorAnio = {
   { nombre: "Taller de Trabajo Final Integrador Mención Postproducción de Imagen", correlativas: ["Géneros Estilos Audiovisuales", "Gestión de proyectos Audiovisuales", "Estética", "Imagen, Tipografía e Identidad Cultural", "Semiótica"] },
   { nombre: "Animación 3D 2", correlativas: ["Animación 3D 1", "Composición Digital"] },
   { nombre: "Taller de Postproducción de Imagen", correlativas: ["Animación 3D 1", "Composición Digital"] },
-  { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] }
- ],
-"SEMINARIOS Y OPTATIVAS": [
-  { nombre: "Seminario de Pensamiento Nacional y Latinoamericano", correlativas: [] },
-  { nombre: "Seminario de Justicia y Derechos Humanos", correlativas: [] },
-  { nombre: "Optativa 1", correlativas: [] },
+  { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Optativa 2", correlativas: [] },
   { nombre: "Optativa 3", correlativas: [] }
  ]
