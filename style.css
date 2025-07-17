@@ -25,7 +25,7 @@ body {
 }
 
 .columna {
-  flex: 0 0 340px; /* ancho fijo */
+  flex: 0 0 200px; /* ancho fijo */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -41,7 +41,7 @@ body {
   background-color: #e19494;
   border: 3px solid #b66262;
   cursor: pointer;
-  min-width: unset;
+  min-width: 180px;
   max-width: 100%;
   transition: 0.2s;
 }
