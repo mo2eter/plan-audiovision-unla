@@ -1,4 +1,4 @@
-const materias = [
+const materiasPorAnio = {
   "PRIMER AÑO": [
   { nombre: "Tecnología de la Imagen", correlativas: [] },
   { nombre: "Elementos de Audio", correlativas: [] },
@@ -58,7 +58,7 @@ const materias = [
   { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
   { nombre: "Optativa 2", correlativas: [] },
   { nombre: "Optativa 3", correlativas: [] }
-];
+};
 
 let aprobadas = new Set();
 
