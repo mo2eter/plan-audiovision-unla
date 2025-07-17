@@ -98,3 +98,23 @@ body {
   color: #fff;
   pointer-events: none;
 }
+
+#malla-tecnico, #malla-licenciatura {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+#tecnico-container, #licenciatura-container {
+  background: #fff8f5;
+  border-radius: 12px;
+  padding: 10px 20px 20px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+#tecnico-container h2, #licenciatura-container h2 {
+  color: #b25e00;
+  margin-top: 0;
+}
