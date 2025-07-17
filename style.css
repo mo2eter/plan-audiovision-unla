@@ -101,9 +101,9 @@ body {
 #licenciatura-container {
   max-width: 1900px; /* 5 columnas * 250px + gaps */
   margin: 0 auto 30px;
-  background: #fff8f5;
+  background: #f5e7e2;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 0 12px #ccc;
+  box-shadow: 0 0 0px #ccc;
   overflow-x: visible;
 }
