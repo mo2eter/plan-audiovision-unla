@@ -15,6 +15,7 @@ body {
   flex-wrap: nowrap;
   gap: 20px;
   overflow-x: auto;
+  padding: 10px;
 }
 
 .columna {
@@ -33,12 +34,6 @@ body {
   font-size: 1.2em;
   color: #6e1a1a;
   text-align: center;
-}
-
-#malla {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
 .materia {
@@ -70,8 +65,8 @@ body {
 }
 
 .aprobada {
-  background-color: #af3333;
-  border-color: #8c1f1f;
+  background-color: #84a59d;
+  border-color: #68a495;
 }
 
 #progreso-container {
