@@ -116,3 +116,19 @@ function renderMaterias() {
 }
 
 renderMaterias();
+
+function actualizarProgreso() {
+  const totalMaterias = Object.values(materiasPorAnio).flat().length;
+  const aprobadasCount = aprobadas.size;
+
+  const porcentaje = Math.round((aprobadasCount / totalMaterias) * 100);
+
+  const barra = document.getElementById("progreso-barra");
+  const texto = document.getElementById("progreso-texto");
+
+  barra.style.width = porcentaje + "%";
+  texto.textContent = `${porcentaje}% Aprobado`;
+}
+
+renderMaterias();
+actualizarProgreso();
