@@ -23,8 +23,7 @@ body {
 }
 
 .columna {
-  min-width: 240px; /* ancho fijo */
-  flex-shrink: 0;
+  flex: 0 0 220px; /* ✅ ancho fijo por columna */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -32,17 +31,19 @@ body {
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 0 10px #ccc;
+  align-items: center;
 }
 
 .materia {
+  width: 200px; /* ✅ ancho fijo para todas las materias */
+  box-sizing: border-box; /* ✅ asegura que padding y border no agranden el bloque */
   padding: 10px;
   border-radius: 8px;
   background-color: #e19494;
   border: 3px solid #b66262;
   cursor: pointer;
-  width: 180px;
   transition: 0.2s;
-  overflow-wrap: break-word; /* por si hay nombres largos */
+  overflow-wrap: break-word; /* ✅ fuerza salto de línea si es necesario */
   text-align: center;
 }
 
