@@ -13,7 +13,7 @@ body {
 .materia {
   padding: 10px;
   border-radius: 8px;
-  background-color: #66000;
+  background-color: #660000;
   border: 3px solid #ccc;
   cursor: pointer;
   min-width: 200px;
@@ -21,7 +21,7 @@ body {
 }
 
 .habilitada {
-  background-color: #66000;
+  background-color: #660000;
   border-color: #3e0505;
 }
 
