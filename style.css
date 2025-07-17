@@ -63,6 +63,12 @@ body {
   cursor: not-allowed;
 }
 
+.cursada {
+  background-color: #e68a00; /* naranja o amarillo suave */
+  border-color: #cc7a00;
+  color: white;
+}
+
 .aprobada {
   background-color: #af3333;
   border-color: #8c1f1f;
