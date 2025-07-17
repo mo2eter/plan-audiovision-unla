@@ -65,7 +65,7 @@ let aprobadas = new Set();
 let cursadas = new Set();
 
 function puedeCursarse(materia) {
-  return materia.correlativas.every(cor => cursadas.has(cor)) || aprobadas.has(cor));
+  return materia.correlativas.every(cor => cursadas.has(cor) || aprobadas.has(cor));
 }
 
 function renderMaterias() {
