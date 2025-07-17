@@ -61,11 +61,26 @@ const materiasPorAnio = {
  ]
 };
 
-let aprobadas = new Set();
-let cursadas = new Set();
+let estadoMaterias = {}; // Guarda el estado de cada materia: 0 = nada, 1 = cursada, 2 = aprobada
 
 function puedeCursarse(materia) {
-  return materia.correlativas.every(cor => cursadas.has(cor) || aprobadas.has(cor));
+  return materia.correlativas.every(cor => {
+    const estado = estadoMaterias[cor] || 0;
+    return estado >= 1; // Se puede cursar si la correlativa fue al menos cursada
+  });
+}
+
+function actualizarProgreso() {
+  const totalMaterias = Object.values(materiasPorAnio).flat().length;
+  const aprobadasCount = Object.values(estadoMaterias).filter(e => e === 2).length;
+
+  const porcentaje = Math.round((aprobadasCount / totalMaterias) * 100);
+
+  const barra = document.getElementById("progreso-barra");
+  const texto = document.getElementById("progreso-texto");
+
+  barra.style.width = porcentaje + "%";
+  texto.textContent = `${porcentaje}% Aprobado`;
 }
 
 function renderMaterias() {
@@ -85,50 +100,33 @@ function renderMaterias() {
       div.className = "materia";
       div.innerText = m.nombre;
 
-  if (aprobadas.has(m.nombre)) {
-    div.classList.add("aprobada");
-    div.addEventListener("click", () => {
-      aprobadas.delete(m.nombre);
-      cursadas.add(m.nombre); // vuelve a "cursada sin final"
-      renderMaterias();
-    });
-  } else if (cursadas.has(m.nombre)) {
-    div.classList.add("cursada");
-    div.addEventListener("click", () => {
-      cursadas.delete(m.nombre);
-      aprobadas.add(m.nombre);
-      renderMaterias();
-    });
-  } else if (puedeCursarse(m)) {
-    div.classList.add("habilitada");
-    div.addEventListener("click", () => {
-      cursadas.add(m.nombre);
-      renderMaterias();
-    });
-  } else {
-    div.classList.add("deshabilitada");
-  }
+      const estado = estadoMaterias[m.nombre] || 0;
 
-  columna.appendChild(div);
-  });
+      if (estado === 2) {
+        div.classList.add("aprobada");
+      } else if (estado === 1) {
+        div.classList.add("cursada");
+      } else if (puedeCursarse(m)) {
+        div.classList.add("habilitada");
+      } else {
+        div.classList.add("deshabilitada");
+      }
+
+      div.addEventListener("click", () => {
+        const estadoActual = estadoMaterias[m.nombre] || 0;
+        const nuevoEstado = (estadoActual + 1) % 3;
+        estadoMaterias[m.nombre] = nuevoEstado;
+        renderMaterias();
+        actualizarProgreso();
+      });
+
+      columna.appendChild(div);
+    });
+
     contenedor.appendChild(columna);
   }
+
+  actualizarProgreso();
 }
 
 renderMaterias();
-
-function actualizarProgreso() {
-  const totalMaterias = Object.values(materiasPorAnio).flat().length;
-  const aprobadasCount = aprobadas.size;
-
-  const porcentaje = Math.round((aprobadasCount / totalMaterias) * 100);
-
-  const barra = document.getElementById("progreso-barra");
-  const texto = document.getElementById("progreso-texto");
-
-  barra.style.width = porcentaje + "%";
-  texto.textContent = `${porcentaje}% Aprobado`;
-}
-
-renderMaterias();
-actualizarProgreso();
