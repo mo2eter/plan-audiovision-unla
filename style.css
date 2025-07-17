@@ -23,7 +23,7 @@ body {
 }
 
 .columna {
-  flex: 0 0 250px; /* ancho fijo */
+  flex: 0 0 200px; /* ancho fijo */
   display: flex;
   flex-direction: column;
   gap: 10px;
