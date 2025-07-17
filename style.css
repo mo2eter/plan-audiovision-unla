@@ -13,9 +13,11 @@ body {
 .malla {
   display: flex;
   gap: 20px;
-  overflow-x: auto; /* Scroll horizontal si no entra */
   padding: 10px 0;
-  justify-content: center;
+  width: max-content; /* ancho según su contenido */
+  overflow-x: auto; /* scroll horizontal si excede el contenedor */
+  margin: 0 auto;
+  /* no usar justify-content: center, para que no compacte las columnas */
 }
 
 .columna {
@@ -102,10 +104,11 @@ body {
 }
 
 #licenciatura-container {
-  max-width: 1300px; /* 5 columnas x 250 + gaps */
+  max-width: 1000px; /* o el máximo que quieras para el bloque contenedor */
   margin: 0 auto 30px;
   background: #fff8f5;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 12px #ccc;
+  overflow-x: visible; /* para que no corte contenido */
 }
