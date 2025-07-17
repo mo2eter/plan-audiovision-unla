@@ -28,9 +28,12 @@ const materiasPorAnio = {
   { nombre: "Realización Integral Audiovisual 2", correlativas: ["Realización Integral Audiovisual 1", "Guión"] },
   { nombre: "Ética Profesional", correlativas: ["Taller de Lectura y Escritura profesional"] }
 ],
-"SEMINARIOS": [
+"SEMINARIOS Y OPTATIVAS": [
   { nombre: "Seminario de Pensamiento Nacional y Latinoamericano", correlativas: [] },
-  { nombre: "Seminario de Justicia y Derechos Humanos", correlativas: [] }
+  { nombre: "Seminario de Justicia y Derechos Humanos", correlativas: [] },
+  { nombre: "Optativa 1", correlativas: [] },
+  { nombre: "Optativa 2", correlativas: [] },
+  { nombre: "Optativa 3", correlativas: [] }
 ],
 "CICLO DE FORMACIÓN ORIENTADA": [
   { nombre: "Gestión de proyectos Audiovisuales", correlativas: ["Realización Integral Audiovisual 2"] },
@@ -48,16 +51,13 @@ const materiasPorAnio = {
   { nombre: "Montaje 2", correlativas: ["Montaje 1"] },
   { nombre: "Animación 3D 1", correlativas: ["Edición y Corrección Digital de Imagen"] },
   { nombre: "Composición Digital", correlativas: ["Edición y Corrección Digital de Imagen"] },
-  { nombre: "Tecnología de Postproducción 3", correlativas: ["Tecnología de Postproducción 2"] },
-  { nombre: "Optativa 1", correlativas: [] }
+  { nombre: "Tecnología de Postproducción 3", correlativas: ["Tecnología de Postproducción 2"] }
 ],
 "QUINTO AÑO": [
   { nombre: "Taller de Trabajo Final Integrador Mención Postproducción de Imagen", correlativas: ["Géneros Estilos Audiovisuales", "Gestión de proyectos Audiovisuales", "Estética", "Imagen, Tipografía e Identidad Cultural", "Semiótica"] },
   { nombre: "Animación 3D 2", correlativas: ["Animación 3D 1", "Composición Digital"] },
   { nombre: "Taller de Postproducción de Imagen", correlativas: ["Animación 3D 1", "Composición Digital"] },
-  { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] },
-  { nombre: "Optativa 2", correlativas: [] },
-  { nombre: "Optativa 3", correlativas: [] }
+  { nombre: "Práctica Preprofesional Mención Postproducción de Imagen", correlativas: ["Realización Integral Audiovisual 2"] }
  ]
 };
 
